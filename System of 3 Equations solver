@@ -1,0 +1,106 @@
+// this code can be improved so that it can solve systems with more then 3 unknows but I'm just a newbie and that's the best i could think of
+
+#include <iostream>
+using namespace std;
+
+const int s = 4;
+
+void fillArray(float ar[],int SIZE)
+{
+    for (int i = 0; i < SIZE; i++)
+    {
+        cin >> ar[i];
+    }
+}
+
+void CopyArrays(float ar1[],float ar2[],int SIZE)
+{
+    for (int i = 0; i < SIZE; i++)
+    {
+        ar1[i] = ar2[i];
+    }
+}
+
+void SystemOf3Equation(float R1[],float R2[],float R3[])       // 1   2   3   4
+{
+                                                                // 2    3   5   6
+        float RC1[s];   CopyArrays(RC1,R1,s);
+        float RC2[s];   CopyArrays(RC2,R2,s);
+        float RC3[s];   CopyArrays(RC3,R3,s);
+
+
+        float operation = -(R2[0]/R1[0]);
+        for (int i = 0; i<4;i++)
+        {
+            R2[i]=operation*R1[i]+R2[i];
+        }
+
+        float operation2 = -(R3[0]/R1[0]);
+        for (int  j = 0; j < 4; j++)
+        {
+            R3[j] = operation2*R1[j] + R3[j];
+        }
+        float operation3 = -(R3[1]/R2[1]);
+        for (int k = 0; k < 4 ;k++)
+        {
+            R3[k] = operation3*R2[k]+R3[k];
+        }
+
+
+        float Z = R3[3]/R3[2];
+        float Y = (R2[3]-Z*R2[2])/R2[1];
+        float X = (R1[3]-R1[2]*Z - R1[1]*Y)/R1[0];
+
+        system("CLS");
+
+        cout << "X = " << X << ", Y = " << Y << ", Z = " << Z<< endl;
+        cout << endl;
+    //////////////////////////////////////////////////////
+    //  Now substitute by x, y ,z in the main equations//
+    /////////////////////////////////////////////////////
+    cout << "Substituting in the main equations we get: " << endl<< endl;
+    
+    cout << "Equation 1: " << endl;
+    cout << RC1[0] << "(" << X << ") + " << RC1[1] << "(" << Y << ") + " << RC1[2] << "(" << Z << ") = " <<
+    RC1[0]*X + RC1[1]*Y + RC1[2]*Z << endl << endl;;
+    
+    cout << "Equation 2: " << endl;
+    cout << RC2[0] << "(" << X << ") + " << RC2[1] << "(" << Y << ") + " << RC2[2] << "(" << Z << ") = " <<
+    RC2[0]*X + RC2[1]*Y + RC2[2]*Z << endl<< endl;
+    
+    cout << "Equation 3: " << endl;
+    cout << RC3[0] << "(" << X << ") + " << RC3[1] << "(" << Y << ") + " << RC3[2] << "(" << Z << ") = " <<
+    RC3[0]*X + RC3[1]*Y + RC3[2]*Z<<endl;
+}
+
+void printArray(float ar[],int SIZE)
+{
+    for (int i = 0 ; i < SIZE; i++)
+    {
+        cout << ar[i] << " ";
+    }
+    cout << endl;
+
+}
+
+int main()
+{
+
+    float ar1[s] = {};
+    float ar2[s] = {};
+    float ar3[s] = {};
+    cout << "Please enter the coefficients of x, y ,z and the result of the equations respectively" << endl<<endl;
+    cout << "Equation 1: ";
+    fillArray(ar1,4);
+    cout << "Equation 2: ";
+    fillArray(ar2,4);
+    cout << "Equation 3: ";
+    fillArray(ar3,4);
+    cout << endl;
+
+    SystemOf3Equation(ar1,ar2,ar3);
+
+
+
+}
+
