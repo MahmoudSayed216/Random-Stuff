@@ -1,4 +1,5 @@
 // this code can be improved so that it can solve systems with more then 3 unknows but I'm just a newbie and that's the best i could think of
+// this is an algorithm that applies  "gaussian elimination" which is a method of solving systems of equations
 
 #include <iostream>
 using namespace std;
