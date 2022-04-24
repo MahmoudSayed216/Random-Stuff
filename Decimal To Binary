@@ -1,0 +1,54 @@
+#include <iostream>
+#include <vector>
+#include<cmath>
+using namespace std;
+
+
+
+void decimalToBinary(int y)
+{
+    if ( y == 0)
+    {
+        cout << "0";
+        return;
+    }
+    else if (y == 1)
+    {
+        cout << "1";
+        return ;
+    }
+    else{
+            vector <int>D2B(1);
+        while(y!=0)
+        {
+            int digit = y%2;
+            y/=2;
+            D2B.push_back(digit);
+
+        }
+    int counter = D2B.size();
+for (int j =counter-1; j >=1; j--)
+    cout << D2B[j] << " ";
+
+    }
+
+
+
+}
+
+
+
+
+
+
+int main()
+{
+    int x;
+    cin >>x;
+
+    decimalToBinary(x);
+
+
+
+    return 0;
+}
