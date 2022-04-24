@@ -59,7 +59,7 @@ void SystemOf3Equation(float R1[],float R2[],float R3[])       // 1   2   3   4
     //////////////////////////////////////////////////////
     //  Now substitute by x, y ,z in the main equations//
     /////////////////////////////////////////////////////
-    cout << "Substituting in the main equations we get: " << endl<< endl;
+    cout << "Substituting in the main equations you get: " << endl<< endl;
     
     cout << "Equation 1: " << endl;
     cout << RC1[0] << "(" << X << ") + " << RC1[1] << "(" << Y << ") + " << RC1[2] << "(" << Z << ") = " <<
