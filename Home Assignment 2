@@ -1,0 +1,72 @@
+#include <iostream>
+using namespace std;
+
+    int SerialNum[4];
+    int Quantity[4];
+    int TotalSales[4];
+
+
+void inputProducts()
+{
+    for (int i = 0; i < 4; i++)
+    {
+        cout << "Enter values of product #" <<i+1 << ":"<<endl;
+        cout << "Serial Num:";
+        cin >> SerialNum[i];
+        cout << "Quantity: ";
+        cin >> Quantity[i];
+        cout << "Total Sales: ";
+        cin >> TotalSales[i];
+    }
+}
+
+void productsLessThan(int x)
+{
+    for (int i = 0; i < 4; i++)
+    {
+        if (Quantity[i] < x)
+            cout << "Product " << SerialNum[i] << endl;
+    }
+}
+
+int GetIndexOfHighestSales()
+{
+    int x= 0;
+    int index;
+    for (int i = 0; i < 4; i++)
+    {
+        if (TotalSales[i]>x)
+        {
+            x = TotalSales[i];
+            index = i+1;
+        }
+
+    }
+
+    return index;
+}
+
+
+int main()
+{
+
+    int VEBU;   // Value Entered By the User
+
+    cout << "Please enter the four products" << endl;
+    inputProducts();
+
+
+
+    cout <<"Serial number of products that has less quantity than value entered by the user "<< endl;
+    cout << "Value entered by the user: "<< endl;
+    cin >> VEBU;
+    productsLessThan(VEBU);
+
+    cout << "Product With Highest Sales: " << endl;
+    cout << "Product: "<<GetIndexOfHighestSales();
+
+
+
+
+    return 0;
+}
