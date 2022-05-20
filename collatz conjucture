@@ -1,0 +1,35 @@
+#include<iostream>
+#include<unistd.h>
+using namespace std;
+int main()
+{
+    long long micro = 1000;
+    long long n;
+    cout << "Enter the value: ";
+    cin >> n;
+    long long step = 0;
+    long long Max = n;
+
+    while (true)
+    {
+        if (n%2 == 0)
+            n/=2;
+        else
+            n = (3*n) +1;
+        if (n>Max)
+            Max = n;
+        step++;
+
+        usleep(micro);
+      //  cout << n << endl;
+      if (n==1)
+        break;
+
+    }
+
+    cout << "Steps: " << step<< endl;
+    cout << "Max: " << Max << endl;
+
+
+    return 0;
+}
