@@ -1,0 +1,58 @@
+#include<iostream>
+using namespace std;
+
+
+int main()
+{
+
+    long long n;
+    long long Max;
+	long long absMax = 0;
+	long long CabsMax = 0;
+	long long AbsSteps;
+    long long steps = 0;
+    long long start;
+    long long endd;
+    cout << "Enter the first and last value: " ;
+    cin >> start >> endd;
+	for (long long i = start; i <=endd;i++)
+    {
+        n=i;
+        steps = 0;
+        Max = n;
+
+        while (true)
+        {
+        if (n%2==0)
+            n/=2;
+        else
+            n = (3*n)+1;
+        steps++;
+        if (n==1)
+            break;
+
+        if (n>Max)
+            Max = n;
+        }
+        cout << "Number: " << i << endl;
+       cout << "Steps: " << steps<<endl;
+       cout << "Max: " << Max << endl;
+       cout << endl;
+       if (Max > absMax)
+       {
+            absMax = Max;
+            CabsMax = i;
+            AbsSteps = steps;
+       }
+
+    }
+    cout <<"Absolute Max = " <<absMax << endl;
+    cout << "Corresponding value is: " << CabsMax << endl;
+    cout << "Corresponding steps: " << AbsSteps << endl;
+
+
+
+
+	return 0;
+
+}
