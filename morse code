@@ -1,0 +1,51 @@
+#include<iostream>
+#include<cstring>
+#include<string>
+#include<string.h>
+using namespace std;
+
+// morse code to actual words coming soon
+// i didn't 'yet' include the morse representation of numbers
+//  ..  .... .- ...- .  .- -.  . - . .-. -. .- .-..  -.-. .-. ..- ... ....  --- -.  -- / .-		 :O
+
+string MC[26] = { ".-", " -...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.." };
+
+void turn_to_morse(string input, string* S)
+{
+
+	for (int i = 0; i < input.length(); i++)
+	{
+		if (input[i] == '.')
+		{
+			S[i] = '/';
+			continue;
+		}
+		S[i] = MC[int(tolower(input[i])) - 97];
+	}
+
+}
+
+void display(string* a, int s)
+{
+	for (int i = 0; i < s; i++)
+		cout << a[i] << " ";
+}
+
+int main()
+{
+
+
+	string input;
+
+	getline(cin,input,'\n');
+	int s = input.length();
+	string* F = new string[input.length()];
+
+	turn_to_morse(input, F);
+
+	cout << endl;
+	display(F, s);
+	delete[] F;
+
+	return 0;
+}
