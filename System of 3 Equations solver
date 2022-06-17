@@ -5,6 +5,8 @@
 using namespace std;
 
 const int s = 4;
+void get_info_and_solve();
+void mainMenu();
 
 void fillArray(float ar[],int SIZE)
 {
@@ -22,9 +24,9 @@ void CopyArrays(float ar1[],float ar2[],int SIZE)
     }
 }
 
-void SystemOf3Equation(float R1[],float R2[],float R3[])       // 1   2   3   4
+void SystemOf3Equation(float R1[],float R2[],float R3[])
 {
-                                                                // 2    3   5   6
+
         float RC1[s];   CopyArrays(RC1,R1,s);
         float RC2[s];   CopyArrays(RC2,R2,s);
         float RC3[s];   CopyArrays(RC3,R3,s);
@@ -47,7 +49,6 @@ void SystemOf3Equation(float R1[],float R2[],float R3[])       // 1   2   3   4
             R3[k] = operation3*R2[k]+R3[k];
         }
 
-
         float Z = R3[3]/R3[2];
         float Y = (R2[3]-Z*R2[2])/R2[1];
         float X = (R1[3]-R1[2]*Z - R1[1]*Y)/R1[0];
@@ -59,19 +60,19 @@ void SystemOf3Equation(float R1[],float R2[],float R3[])       // 1   2   3   4
     //////////////////////////////////////////////////////
     //  Now substitute by x, y ,z in the main equations//
     /////////////////////////////////////////////////////
-    cout << "Substituting in the main equations you get: " << endl<< endl;
-    
+    cout << "Substituting in the main equations we get: " << endl<< endl;
+
     cout << "Equation 1: " << endl;
     cout << RC1[0] << "(" << X << ") + " << RC1[1] << "(" << Y << ") + " << RC1[2] << "(" << Z << ") = " <<
     RC1[0]*X + RC1[1]*Y + RC1[2]*Z << endl << endl;;
-    
+
     cout << "Equation 2: " << endl;
     cout << RC2[0] << "(" << X << ") + " << RC2[1] << "(" << Y << ") + " << RC2[2] << "(" << Z << ") = " <<
     RC2[0]*X + RC2[1]*Y + RC2[2]*Z << endl<< endl;
-    
+
     cout << "Equation 3: " << endl;
     cout << RC3[0] << "(" << X << ") + " << RC3[1] << "(" << Y << ") + " << RC3[2] << "(" << Z << ") = " <<
-    RC3[0]*X + RC3[1]*Y + RC3[2]*Z<<endl;
+    RC3[0]*X + RC3[1]*Y + RC3[2]*Z<<endl<<endl;
 }
 
 void printArray(float ar[],int SIZE)
@@ -81,16 +82,13 @@ void printArray(float ar[],int SIZE)
         cout << ar[i] << " ";
     }
     cout << endl;
-
 }
 
-int main()
+void get_info_and_solve()
 {
-
     float ar1[s] = {};
     float ar2[s] = {};
     float ar3[s] = {};
-    cout << "Please enter the coefficients of x, y ,z and the result of the equations respectively" << endl<<endl;
     cout << "Equation 1: ";
     fillArray(ar1,4);
     cout << "Equation 2: ";
@@ -101,7 +99,63 @@ int main()
 
     SystemOf3Equation(ar1,ar2,ar3);
 
+}
+void how_to_use()
+{
+     cout << endl;
+     cout << "If you want to input an Equation e.g. 2x +6y +8z = -9" << endl;
+     cout << "use the following format" << endl;
+     cout << "Equation 1: 2 6 8 -9" << endl<<endl;
+     cout << "Note: Floats are allowed" << endl << endl;
+     cout << "Note 2: if an equation is equal to zero e.g. 3x + 7y - 2z = 0\n";
+     cout << "The program will give you a strange output in the substitution part such as \n"
+     " -5.96064e-8 which translates to -5.96064 * 10^-8, which is approximately zero. so don't freak out ";
+     cout << endl<<endl;
+    system("pause");
+        mainMenu();
+
+}
+void mainMenu()
+{
+    k:
+    system("CLS");
+    int choice;
+
+    cout << "1- solve a system of equations" << endl;
+    cout << "2- how to use" << endl;
+    cout << "3- exit" << endl;
+    cin >> choice;
+    if(choice == 1)
+    {   m:
+        get_info_and_solve();
+            cout << "input 1 to solve another equation " << endl;
+            cout << "input 2 to exit" << endl;
+            int input;
+            cin >> input;
+            system("CLS");
+            if (input == 1)
+                goto m;
+            else
+               goto j;
+
+    }
+    else if (choice == 2)
+        how_to_use();
+
+    else
+    {
+        j:
+        exit(1);
+    }
+}
+
+int main()
+{
+
+    mainMenu();
 
 
 }
+
+
 
