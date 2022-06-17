@@ -1,0 +1,42 @@
+def max_digit(x):
+    x = int(x)
+    res = 0
+    while x!=0:
+        res = max(res, x%10)
+        x/=10
+    
+    return res
+
+def num_digit(x, b):
+    x = int(x)
+    res = 0
+
+    while x!= 0:
+        res+=1
+        x/=b
+
+    return res
+
+def parse_base(x, b):
+    x = int(x)
+    b = int(b)
+    num = []
+    res = 0
+    while x!=0:
+        num.append(x%10)
+        x/=10
+    
+    while len(num) != 0:
+        res*=b
+        res+= num[-1]
+        num.pop()
+
+    return res
+
+
+a = int(input("Enter the value of a"))
+b = int(input("Enter the value of b"))
+
+m = max(max_digit(a), max_digit(b))
+print (num_digit(parse_base(a,m+1)+parse_base(b,m+1), m+1))
+
