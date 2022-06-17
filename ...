@@ -34,8 +34,8 @@ def parse_base(x, b):
     return res
 
 
-a = int(input("Enter the value of a"))
-b = int(input("Enter the value of b"))
+a = int(input("Enter the value of a: "))
+b = int(input("Enter the value of b: "))
 
 m = max(max_digit(a), max_digit(b))
 print (num_digit(parse_base(a,m+1)+parse_base(b,m+1), m+1))
